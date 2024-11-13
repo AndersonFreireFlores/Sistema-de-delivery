@@ -1,10 +1,10 @@
 package com.example.delivery.Models.Restaurante;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.delivery.Models.Item.Item;
+import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -13,21 +13,24 @@ public class Restaurante {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-
+    @NonNull
     private String nome;
-
+    @NonNull
     private String endereco;
-
+    @NonNull
     private String telefone;
+    @OneToMany(mappedBy = "restaurante")
+    private Set<Item> itens;
 
     public Restaurante() {
     }
 
-    public Restaurante(UUID id, String nome, String endereco, String telefone) {
+    public Restaurante(UUID id, @NonNull String nome, @NonNull String endereco, @NonNull String telefone, Set<Item> itens) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
+        this.itens = itens;
     }
 
     public UUID getId() {
