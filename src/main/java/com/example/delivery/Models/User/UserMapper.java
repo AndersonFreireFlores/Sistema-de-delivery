@@ -1,6 +1,5 @@
 package com.example.delivery.Models.User;
 
-import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
