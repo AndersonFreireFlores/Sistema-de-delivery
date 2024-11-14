@@ -2,6 +2,7 @@ package com.example.delivery.Models.User;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 import java.util.Set;
@@ -19,4 +20,6 @@ public interface UserMapper {
     UserDTO convert(User user);
 
     Set<UserDTO> convert(List<User> all);
+
+    void convert(UserDTO userDTO, @MappingTarget User user);
 }
