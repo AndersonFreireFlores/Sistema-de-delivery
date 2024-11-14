@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 public interface PedidoMapper {
 
     @Mapping(target = "id", ignore = true)
-    Pedido toPedido(PedidoDTO pedidoDTO);
+    Pedido convert(PedidoDTO pedidoDTO);
 
-    PedidoDTO toPedidoDTO(Pedido pedido);
+    PedidoDTO convert(Pedido pedido);
 }
