@@ -6,6 +6,7 @@ import com.example.delivery.Models.Pedido.PedidoMapper;
 import com.example.delivery.Repositories.PedidoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -22,9 +23,14 @@ public class PedidoService {
     public PedidoDTO getPedidoById(UUID id) {
         return pedidoMapper.convert(pedidoRepository.findById(id).orElseThrow(() -> new RuntimeException("Pedido not found")));
     }
+
+    public Set<PedidoDTO> getPedidos() {
+        return pedidoMapper.convert(pedidoRepository.findAll());
+    }
     public void createPedido(PedidoDTO pedidoDTO) {
         pedidoRepository.save(pedidoMapper.convert(pedidoDTO));
     }
+
     public void updatePedido(UUID id, PedidoDTO pedidoDTO) {
         Pedido pedido = pedidoRepository.findById(id).orElseThrow(() -> new RuntimeException("Pedido not found"));
         pedidoMapper.convert(pedidoDTO, pedido);
